@@ -1,0 +1,22 @@
+A.	Kode HTML dan Penjelasan Bagian
+Penjelasan tentang struktur HTML di dalam sistem AgriData :
+1.  <head> & Metadata: Bagian ini menetapkan karakter encoding UTF-8, pengaturan viewport agar website responsif di HP, dan menghubungkan file eksternal Landing.css sebagai pengatur gaya.
+2.	<header>: Bagian ini berfungsi sebagai navigasi atas yang berisi logo sistem, menu navigasi (Beranda, Fitur, Tentang), serta tombol aksi untuk mengganti tema (Dark Mode) dan tombol masuk admin.
+3.	Section hero: Bagian utama atau landing yang berisi judul besar (headline), deskripsi singkat platform, dan gambar ilustrasi dashboard untuk menarik perhatian pengguna saat pertama kali membuka web.
+4.	Section features: Menggunakan struktur kartu (cards) untuk menampilkan empat layanan utama AgriData. Setiap kartu dilengkapi dengan ikon emoji sebagai penanda visual yang jelas.
+5.	Section about: Memberikan penjelasan mendalam mengenai visi AgriData dalam memajukan sektor pertanian lokal melalui teknologi informasi.
+6.	Section articles: Berisi kartu berita yang terhubung dengan link resmi pemerintah (BPS & Kementan) untuk menunjukkan bahwa sistem ini didukung oleh kebijakan data yang valid.
+7.	Section daftar (Form): Bagian interaktif berupa formulir untuk menginput data petani. Di sini terdapat pesan error yang tersembunyi dan hanya akan muncul jika divalidasi oleh JavaScript.
+8.	modal-overlay: Elemen pop-up yang muncul di tengah layar sebagai notifikasi sukses setelah pengguna berhasil mengirim data melalui formulir.
+
+B.	 Kode CSS dan Penjelasan Kegunaan
+1.	Desain visual AgriData diatur sepenuhnya melalui CSS dengan pendekatan modern. Pertama, saya menggunakan Variabel CSS (:root) untuk menentukan palet warna utama seperti hijau untuk kesan pertanian dan biru untuk tombol aksi. Penggunaan variabel ini sangat krusial agar pergantian tema dari Light Mode ke Dark Mode bisa dilakukan dengan cepat hanya dengan mengubah nilai warnanya di satu tempat.
+2.	Untuk tata letak, saya menerapkan Flexbox pada bagian header, hero, dan about. Teknik ini memungkinkan konten sejajar secara horizontal dan tetap presisi di tengah secara vertikal. Sementara itu, pada bagian fitur dan berita, saya menggunakan CSS Grid dengan properti auto-fit. Hal ini membuat jumlah kolom pada kartu fitur akan otomatis berkurang atau bertambah sesuai dengan lebar layar perangkat pengguna.
+3.	Sisi visual dipercantik dengan penggunaan Transitions & Hover Effects. Setiap tombol dan kartu akan berubah warna atau sedikit terangkat (translate) saat disentuh kursor, memberikan umpan balik visual yang interaktif. Selain itu, saya menambahkan Animations pada bagian modal menggunakan @keyframes agar kotak notifikasi muncul dengan efek membesar yang halus.
+4.	Terakhir, website ini sudah mendukung Responsive Design melalui media queries. Ketika dibuka di layar di bawah 768px (seperti smartphone), tata letak yang tadinya menyamping akan otomatis berubah menjadi tumpukan vertikal satu kolom agar tetap nyaman dibaca oleh pengguna.
+
+C.	 Kode JavaScript dan Penjelasan Fungsinya
+JavaScript digunakan untuk memberikan logika dan interaktivitas pada halaman:
+1.	Toggle Dark Mode: Skrip ini bekerja dengan mendeteksi klik pada tombol tema. Saat diklik, JavaScript akan mengubah atribut data-theme pada tag <html>. Perubahan atribut ini memicu CSS untuk mengganti semua warna variabel menjadi palet gelap secara instan.
+2.	Validasi Formulir: Untuk mencegah masuknya data kosong, saya menggunakan fungsi event.preventDefault(). Skrip akan memeriksa isi input nama dan komoditas. Jika terdeteksi kosong (menggunakan .trim()), pesan peringatan berwarna merah akan muncul di bawah input terkait.
+3.	Manajemen Modal: Jika seluruh validasi terpenuhi, JavaScript akan mengubah gaya tampilan success modal dari none menjadi flex. Pengguna juga bisa menutup modal tersebut dengan mengklik tombol "Tutup" atau cukup mengklik area gelap di luar kotak notifikasi.
