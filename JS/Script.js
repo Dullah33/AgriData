@@ -50,10 +50,21 @@ form.addEventListener('submit', function(event) {
         errorKomoditas.style.display = "none";
     }
 
-    // Jika semua input valid, TAMPILKAN MODAL DI TENGAH LAYAR
+    // Jika semua input valid, TAMPILKAN MODAL & DATANYA
     if (isValid === true) {
-        successModal.style.display = "flex"; // Mengubah display dari none ke flex agar di tengah
-        form.reset(); // Mengosongkan isian form kembali
+        // 1. Tangkap elemen span di dalam modal
+        const resNama = document.getElementById('res-nama');
+        const resKomoditas = document.getElementById('res-komoditas');
+
+        // 2. Masukkan nilai ketikan user ke dalam teks span tersebut
+        resNama.textContent = inputNama.value;
+        resKomoditas.textContent = inputKomoditas.value;
+
+        // 3. Tampilkan modalnya
+        successModal.style.display = "flex"; 
+        
+        // 4. Baru reset/kosongkan formnya
+        form.reset(); 
     }
 });
 
